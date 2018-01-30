@@ -1,0 +1,45 @@
+<style lang="less">
+  .container.info-entry-basic {
+    background-color: #f4f4f6;
+  }
+
+</style>
+<template>
+  <view class="container info-entry-basic">
+    <toast />
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Toast from 'wepy-com-toast'
+  import testMixin from '../mixins/test'
+
+  export default class InfoEntryBasic extends wepy.page {
+    config = {
+      navigationBarTitleText: '基本信息录入'
+    };
+    components = {
+      toast: Toast
+    };
+
+    mixins = [testMixin];
+
+    data = {};
+
+    computed = {
+      now () {
+        return +new Date()
+      }
+    };
+
+    methods = {};
+
+    events = {};
+
+    onLoad() {
+      let base64 = require('../assets/images/base64')
+      this.icon60 = base64.icon60
+    };
+  }
+</script>

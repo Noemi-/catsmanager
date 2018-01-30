@@ -1,0 +1,70 @@
+
+  <view class="container">
+    <view class="section bulletin-board">
+      <swiper indicator-dots="{{indicatorDots}}" class="swiper" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block  wx:for="{{imgUrls}}" wx:key="{{i}}">
+          <swiper-item>
+
+            <image src="{{item}}" class="swiper-item"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="section contract">
+      <view class="contract-article">
+        <icon type="info_circle" size="13" color="#c55e44"/>
+        <text>营业执照</text>
+      </view>
+      <view class="contract-article">
+        <icon type="info_circle" size="13" color="#c55e44"/>
+        <text>公安备案</text>
+      </view>
+      <view class="contract-article">
+        <icon type="info_circle" size="13" color="#c55e44"/>
+        <text>铲屎官信息公示</text>
+      </view>
+    </view>
+
+    <view class="section coupon"/>
+
+    <view class="section appointment">
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{icon60}}"/>
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">预约铲屎</view>
+          <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。</view>
+        </view>
+      </navigator>
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{icon60}}"/>
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">预约洗澡</view>
+          <view class="weui-media-box__desc">包括除虫、猫咪清洗等等。</view>
+        </view>
+      </navigator>
+    </view>
+
+
+
+
+
+    
+    <view class="wetoast {{$toast$reveal ? 'wetoast_show' : ''}}">
+        <view class="wetoast__mask"/>
+        <view class="wetoast__bd" animation="{{$toast$animationData}}">
+            <block  wx:if="{{$toast$img}}">
+                <view class="wetoast__bd__img {{$toast$imgClassName || ''}}">
+                    <image class="wetoast__bd__img_desc" src="{{$toast$img}}" mode="{{$toast$imgMode || 'scaleToFill'}}"/>
+                </view>
+            </block>
+            <block  wx:if="{{$toast$title}}">
+                <view class="wetoast__bd__title {{$toast$titleClassName || ''}}">{{$toast$title}}</view>
+            </block>
+        </view>
+    </view>
+
+  </view>

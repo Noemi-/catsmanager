@@ -1,0 +1,2 @@
+@import "./../npm/wepy-com-toast/toast.wxss";
+.container.info-entry-cats{background-color:#f4f4f6}

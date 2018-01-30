@@ -1,0 +1,108 @@
+
+  <view class="container mine">
+    <view class="section userinfo">
+      <view class="userinfo-content" bindtap="handleViewTap">
+        <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
+        <!--<view class="userinfo-nickname">-->
+        <!--余额：*** |-->
+        <!--</view>-->
+        <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+      </view>
+    </view>
+
+    <view class="section orders weui-panel weui-panel_access">
+      <view class="weui-panel__hd">
+        <navigator url="" open-type="">
+          <view class="order-header">
+            <view class="order-mine">我的订单</view>
+            <view class="order-arrow">></view>
+            <view class="order-all">查看全部订单</view>
+          </view>
+        </navigator>
+      </view>
+      <view class="weui-panel__bd">
+        <navigator url="" class="order order-unfinished" hover-class="none">
+          <view class="order-content" style="display: inline-block;">
+            <image src="{{icon60}}"/>
+            <text>待付款</text>
+          </view>
+        </navigator>
+        <navigator url="" class="order order-on-going" hover-class="none">
+          <view class="order-content">
+            <image src="{{icon60}}"/>
+            <text>进行中</text>
+          </view>
+        </navigator>
+        <navigator url="" class="order order-finished" hover-class="none">
+          <view class="order-content">
+            <image src="{{icon60}}"/>
+            <text>已完成</text>
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="section mines weui-panel weui-panel_access">
+      <view class="weui-panel__bd">
+        <navigator url="/pages/info_entry_basic" class="mine mine-baseInfo" open-type="navigate" hover-class="none">
+          <view class="mine-content" style="display: inline-block;">
+            <image src="{{icon60}}"/>
+            <text>我的资料</text>
+          </view>
+        </navigator>
+        <navigator url="/pages/info_entry_cats" class="mine mine-catsInfo" hover-class="none">
+          <view class="mine-content">
+            <image src="{{icon60}}"/>
+            <text>我的猫咪</text>
+          </view>
+        </navigator>
+        <navigator url="/pages/info_entry_more" class="mine mine-moreInfo" hover-class="none">
+          <view class="mine-content">
+            <image src="{{icon60}}"/>
+            <text>补充资料</text>
+          </view>
+        </navigator>
+      </view>
+
+    </view>
+
+    <view class="section contact-us">
+      <view class="weui-cells weui-cells_after-title">
+        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="{{icon60}}" style="margin-right: 5px;width:20px; height: 20px;vertical-align: middle;"/>
+          </view>
+          <view class="weui-cell__bd">我的优惠券</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"/>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="section contact-us" style="margin-bottom: 20px;">
+      <view class="weui-cells weui-cells_after-title">
+        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="{{icon60}}" style="margin-right: 5px;width:20px; height: 20px;vertical-align: middle;"/>
+          </view>
+          <view class="weui-cell__bd">联系客服</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"/>
+        </navigator>
+      </view>
+    </view>
+
+    
+    <view class="wetoast {{$toast$reveal ? 'wetoast_show' : ''}}">
+        <view class="wetoast__mask"/>
+        <view class="wetoast__bd" animation="{{$toast$animationData}}">
+            <block  wx:if="{{$toast$img}}">
+                <view class="wetoast__bd__img {{$toast$imgClassName || ''}}">
+                    <image class="wetoast__bd__img_desc" src="{{$toast$img}}" mode="{{$toast$imgMode || 'scaleToFill'}}"/>
+                </view>
+            </block>
+            <block  wx:if="{{$toast$title}}">
+                <view class="wetoast__bd__title {{$toast$titleClassName || ''}}">{{$toast$title}}</view>
+            </block>
+        </view>
+    </view>
+
+  </view>

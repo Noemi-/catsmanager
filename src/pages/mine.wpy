@@ -1,0 +1,390 @@
+<style lang="less">
+  .container.mine {
+    background-color: #f4f4f6;
+
+    .section.userinfo {
+      width: 100%;
+      height: 300rpx;
+      background-color: #ffd100;
+
+      .userinfo-content {
+        margin-top: 50rpx;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .userinfo-avatar {
+          width: 160rpx;
+          height: 160rpx;
+          border-radius: 50%;
+          box-shadow:2px 2px 10px #888;
+        }
+
+        .userinfo-nickname {
+          font-family:Microsoft YaHei;
+          color: #000;
+          font-size:28rpx;
+          margin-top:30rpx;
+        }
+      }
+    }
+
+    .section.orders {
+      width: 100%;
+
+      .weui-panel__hd {
+        height: 40rpx;
+        color: #666;
+      }
+
+      .order-header {
+        .order-mine {
+          float: left;
+          color: #565656;
+          font-size: 29rpx;
+        }
+
+        .order-arrow {
+          float: right;
+          margin-left: 10rpx;
+          margin-top:-3rpx;
+          color:#909090;
+        }
+
+        .order-all {
+          float: right;
+          color: #909090;
+          font-size: 24rpx;
+        }
+
+      }
+
+      .weui-panel__bd {
+        text-align:center;
+      }
+
+      .order {
+        display:inline-block;
+        // width: 120rpx;
+        padding: 24rpx 24rpx 0 24rpx;
+
+        .order-content {
+          margin-right:.8em;
+          width:60px;
+          height:60px;
+          // line-height:60px;
+          text-align:center;
+
+          image {
+            width:100%;
+            height:100%;
+          }
+        }
+
+        text {
+          font-size: 25rpx;
+        }
+      }
+
+      .order-unfinished {
+      }
+    }
+
+    .section.mines {
+      width: 100%;
+
+      .weui-panel__bd {
+        text-align:center;
+      }
+
+      .mine {
+        display:inline-block;
+        // width: 120rpx;
+        padding: 24rpx 24rpx 0 24rpx;
+
+        .mine-content {
+          margin-right:.8em;
+          width:60px;
+          height:60px;
+          // line-height:60px;
+          text-align:center;
+
+          image {
+            width:100%;
+            height:100%;
+          }
+        }
+
+        text {
+          font-size: 25rpx;
+        }
+      }
+    }
+
+    .section.contact-us {
+      width: 100%;
+      margin-top:10px;
+
+      .weui-cell__bd {
+        font-size: 29rpx;
+        line-height: 20px;
+      }
+    }
+  }
+
+</style>
+<template>
+  <view class="container mine">
+    <view class="section userinfo">
+      <view class="userinfo-content" @tap="handleViewTap">
+        <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
+        <!--<view class="userinfo-nickname">-->
+        <!--余额：*** |-->
+        <!--</view>-->
+        <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+      </view>
+    </view>
+
+    <view class="section orders weui-panel weui-panel_access">
+      <view class="weui-panel__hd">
+        <navigator url="" open-type="">
+          <view class="order-header">
+            <view class="order-mine">我的订单</view>
+            <view class="order-arrow">&gt;</view>
+            <view class="order-all">查看全部订单</view>
+          </view>
+        </navigator>
+      </view>
+      <view class="weui-panel__bd">
+        <navigator url="" class="order order-unfinished" hover-class="none">
+          <view class="order-content" style="display: inline-block;">
+            <image src="{{icon60}}" />
+            <text>待付款</text>
+          </view>
+        </navigator>
+        <navigator url="" class="order order-on-going" hover-class="none">
+          <view class="order-content">
+            <image src="{{icon60}}" />
+            <text>进行中</text>
+          </view>
+        </navigator>
+        <navigator url="" class="order order-finished" hover-class="none">
+          <view class="order-content">
+            <image src="{{icon60}}" />
+            <text>已完成</text>
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="section mines weui-panel weui-panel_access">
+      <view class="weui-panel__bd">
+        <navigator url="/pages/info_entry_basic" class="mine mine-baseInfo" open-type="navigate" hover-class="none">
+          <view class="mine-content" style="display: inline-block;">
+            <image src="{{icon60}}" />
+            <text>我的资料</text>
+          </view>
+        </navigator>
+        <navigator url="/pages/info_entry_cats" class="mine mine-catsInfo" hover-class="none">
+          <view class="mine-content">
+            <image src="{{icon60}}" />
+            <text>我的猫咪</text>
+          </view>
+        </navigator>
+        <navigator url="/pages/info_entry_more" class="mine mine-moreInfo" hover-class="none">
+          <view class="mine-content">
+            <image src="{{icon60}}" />
+            <text>补充资料</text>
+          </view>
+        </navigator>
+      </view>
+
+    </view>
+
+    <view class="section contact-us">
+      <view class="weui-cells weui-cells_after-title">
+        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="{{icon60}}" style="margin-right: 5px;width:20px; height: 20px;vertical-align: middle;"></image>
+          </view>
+          <view class="weui-cell__bd">我的优惠券</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="section contact-us" style="margin-bottom: 20px;">
+      <view class="weui-cells weui-cells_after-title">
+        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="{{icon60}}" style="margin-right: 5px;width:20px; height: 20px;vertical-align: middle;"></image>
+          </view>
+          <view class="weui-cell__bd">联系客服</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+    </view>
+
+    <toast />
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import List from '../components/list'
+  import Panel from '@/components/panel' // alias example
+  import Counter from 'counter' // alias example
+  import Group from '../components/group'
+  import Toast from 'wepy-com-toast'
+  import testMixin from '../mixins/test'
+
+  export default class Mine extends wepy.page {
+    config = {
+      navigationBarTitleText: '',
+      navigationBarBackgroundColor: '#ffd100'
+    };
+    components = {
+      panel: Panel,
+      counter1: Counter,
+      counter2: Counter,
+      list: List,
+      group: Group,
+      toast: Toast
+    };
+
+    mixins = [testMixin];
+
+    data = {
+      icon60: '',
+      mynum: 20,
+      userInfo: {
+        nickName: '加载中...'
+      },
+      normalTitle: '原始标题',
+      setTimeoutTitle: '标题三秒后会被修改',
+      count: 0,
+      netrst: '',
+      groupList: [
+        {
+          id: 1,
+          name: '点击改变',
+          list: [
+            {
+              childid: '1.1',
+              childname: '子项，点我改变'
+            }, {
+              childid: '1.2',
+              childname: '子项，点我改变'
+            }, {
+              childid: '1.3',
+              childname: '子项，点我改变'
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: '点击改变',
+          list: [
+            {
+              childid: '2.1',
+              childname: '子项，点我改变'
+            }, {
+              childid: '2.2',
+              childname: '子项，点我改变'
+            }, {
+              childid: '2.3',
+              childname: '子项，点我改变'
+            }
+          ]
+        },
+        {
+          id: 3,
+          name: '点击改变',
+          list: [
+            {
+              childid: '3.1',
+              childname: '子项，点我改变'
+            }
+          ]
+        }
+      ]
+    };
+
+    computed = {
+      now () {
+        return +new Date()
+      }
+    };
+
+    methods = {
+      plus () {
+        this.mynum++
+      },
+      toast () {
+        let promise = this.$invoke('toast', 'show', {
+          title: '自定义标题',
+          img: 'https://raw.githubusercontent.com/kiinlam/wetoast/master/images/star.png'
+        })
+
+        promise.then((d) => {
+          console.log('toast done')
+        })
+      },
+      tap () {
+        console.log('do noting from ' + this.$name)
+      },
+      communicate () {
+        console.log(this.$name + ' tap')
+
+        this.$invoke('counter2', 'minus', 45, 6)
+        this.$invoke('counter1', 'plus', 45, 6)
+
+        this.$broadcast('index-broadcast', 1, 3, 4)
+      },
+      request () {
+        let self = this
+        let i = 10
+        let map = ['MA==', 'MQo=', 'Mg==', 'Mw==', 'NA==', 'NQ==', 'Ng==', 'Nw==', 'OA==', 'OQ==']
+        while (i--) {
+          wepy.request({
+            url: 'https://www.madcoder.cn/tests/sleep.php?time=1&t=css&c=' + map[i] + '&i=' + i,
+            success: function (d) {
+              self.netrst += d.data + '.'
+              self.$apply()
+            }
+          })
+        }
+      },
+      counterEmit (...args) {
+        let $event = args[args.length - 1]
+        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
+      }
+    };
+
+    events = {
+      'index-emit': (...args) => {
+        let $event = args[args.length - 1]
+        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
+      }
+    };
+
+    onLoad() {
+      let base64 = require('../assets/images/base64')
+      this.icon60 = base64.icon60
+      let self = this
+      console.log(this.$parent.globalData.userInfo)
+      self.userInfo = this.$parent.globalData.userInfo
+
+//      setTimeout(() => {
+//        self.$apply()
+//      }, 3000)
+
+//      this.$parent.getUserInfo(function (userInfo) {
+//        if (userInfo) {
+//          self.userInfo = userInfo
+//        }
+//
+//      })
+    };
+  }
+</script>
